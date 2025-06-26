@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { assets } from "@/Assets/assets";
 
-const PromptBox = () => {
+const PromptBox = ({isLoading, setIsLoading}) => {
   const [prompt, setPrompt] = useState("");
 
   return (
