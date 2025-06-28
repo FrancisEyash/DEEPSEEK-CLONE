@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    const { userId } = getAuth();
+    const { userId } = getAuth(req);
 
     if (!userId) {
       return NextResponse.json({
@@ -24,7 +24,7 @@ export async function POST(req) {
 
     // connect to database and create a new chat
     await connectDB();
-    Chat.create(chatData);
+    await Chat.create(chatData);
 
     return NextResponse.json({ success: true, message: "Chat created" });
   } catch (error) {

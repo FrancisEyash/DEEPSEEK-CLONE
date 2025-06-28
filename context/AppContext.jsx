@@ -33,7 +33,6 @@ export const AppContextProvider = ({ children }) => {
         }
       );
 
-      fetchUsersChats();
     } catch (error) {
       toast.error(error.message);
     }

@@ -3,6 +3,7 @@ import connectDB from "@/config/db";
 import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import Chat from "@/models/Chat";
 
 // Initialize OpenAI client with DeepSeek API key and base URL
 const openai = new OpenAI({
@@ -12,7 +13,7 @@ const openai = new OpenAI({
 
 export async function POST(req) {
   try {
-    const { userId } = getAuth();
+    const { userId } = getAuth(req);
 
     const { chatId, prompt } = await req.json();
 

@@ -23,6 +23,7 @@ const PromptBox = ({ isLoading, setIsLoading }) => {
     try {
       e.preventDefault();
       if (!user) return toast.error("Login to send message");
+      if (!selectedChat) return toast.error("No chat selected");
       if (isLoading)
         return toast.error("Wait for the previous prompt response");
 

@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try {
-    const { userId } = getAuth();
+    const { userId } = getAuth(req);
     if (!userId) {
       return NextResponse.json({
         success: false,
@@ -15,7 +15,7 @@ export async function GET(req) {
 
     // connect to db and fetch all chats for the user
     await connectDB();
-    const data = Chat.find(userId);
+    const data = await Chat.find({ userId });
 
     return NextResponse.json({ success: true, data });
   } catch (error) {
