@@ -19,9 +19,7 @@ export const AppContextProvider = ({ children }) => {
 
   const createNewChat = async () => {
     try {
-      if (!user) {
-        return null;
-      }
+      if (!user) return null;
 
       const token = await getToken();
 
